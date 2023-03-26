@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Deluxe Room</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <!-- header  -->
+    <header class="navbar-light bg-light shadow position-sticky top-0" style="z-index: 99;">
+        <nav class="navbar navbar-expand-lg container">
+            <a class="navbar-brand" href="/"><img src="h-elite.gif" alt="logo" style="width:120px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="/">Rooms</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="amenities.html">Amenities</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="resturant.html">Restaurant</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="event.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                  </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- header end  -->
+
+    <!-- carousel  -->
+    <div id="carouselExampleControls" class="carousel slide container mt-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    class="d-block w-100" style="height: 70vh;" alt="Image">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    class="d-block w-100" style="height: 70vh;" alt="Image">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.pexels.com/photos/237371/pexels-photo-237371.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    class="d-block w-100" style="height: 70vh;" alt="Image">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- carousel end  -->
+
+
+    <!-- main container  -->
+    <div class="container mt-5">
+        <h1 class="text-center mb-5 text-capitalize">Book Your Room</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <img src="https://images.pexels.com/photos/279746/pexels-photo-279746.jpeg?auto=compress&cs=tinysrgb&w=600"
+                        class="card-img-top" alt="Standard Room" style="height: 50vh;">
+                    <div class="card-body">
+                        <h5 class="card-title">Deluxe Room</h5>
+                        <p class="card-text">The rooms of the hotel are classified according to the number of beds in
+                            them, their size and their range of facilities. Prices of rooms in every hotel are different
+                            depends upon their convenience. There are the top three basic categories of the room for the
+                            hotel; on their based the hotel rooms are divided: Standard, Family Rooms and Suites.
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-primary add-to-cart" data-room-type="standard">Add to Cart</button>
+                            <span class="text-success fs-4">&#8377; 5000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Cart</h2>
+                <ul id="cart-items"></ul>
+                <button id="clear-cart" class="btn btn-danger">Clear Cart</button>
+                <h2>User Details</h2>
+                <form id="booking-form">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3" id="number">
+                        <label for="number" class="form-label">Mob No.</label>
+                        <input type="text" class="form-control" id="phone" name="number" minlength="10" maxlength="10" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Address</label>
+                        <textarea class="form-control" id="address" name="address" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <input type="hidden" id="total-rooms" name="total_rooms" value="0">
+                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">Book Now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- main container end  -->
+
+
+    <!-- Modal -->  
+    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <td id="name_1"></td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td id="email_1"></td>
+                            </tr>
+                            <tr>
+                                <th>Mob No.</th>
+                                <td id="mob"></td>
+                            </tr>
+                            <tr>
+                                <th>Address</th>
+                                <td id="address_1"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Rooms</th>
+                                <td id="room"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Prices</th>
+                                <td id="price"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="confirmPayment">Pay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+      <!-- footer  -->
+      <footer class="bg-light">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p class="text-muted">H-Elite is a luxury hotel chain owned by Name, with the H-Elite Palace in Patna as its flagship property.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="service.html">Services</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt"></i> 13<sup>th</sup> Bailey Road, Patna, BR 800014</li>
+                        <li><i class="fas fa-phone"></i> +91 9845623147</li>
+                        <li><i class="fas fa-envelope"></i> info@helite.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-muted">Copyright © 2023 <a href="#" target="_blank">H-Elite</a>. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="privacy.html">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="term.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end  -->
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://kit.fontawesome.com/2e908ec99e.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

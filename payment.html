@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        @media only screen and (max-width:580px) {
+            .w-50{
+                width: 100% !important;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- header  -->
+    <header class="navbar-light bg-light shadow position-sticky top-0" style="z-index: 99;">
+        <nav class="navbar navbar-expand-lg container">
+            <a class="navbar-brand" href="/"><img src="h-elite.gif" alt="logo" style="width:120px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="/">Rooms</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="amenities.html">Amenities</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="resturant.html">Restaurant</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="event.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                  </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- header end  -->
+
+    <!-- main container  -->
+    <main class="container mt-5">
+        <h2 class="text-center text-capitalize text-success">card details</h2>
+        <div class="d-flex flex-column gap-3 w-50 m-auto shadow p-4 mb-4">
+            <div class="form-group d-flex flex-column gap-2">
+                <label>Card Number</label>
+                <div id="number">
+                    <input type="text" minlength="16" maxlength="18" id="txtCard" class="form-control">
+                </div>
+            </div>
+            <div class="form-group d-flex flex-column">
+                <label>CVV</label>
+                <div id="number">
+                    <input type="text" minlength="3" maxlength="3" pattern="[0-9]+" required id="txtCvv" class="form-control">
+                </div>
+            </div>
+            <div class="form-group d-flex flex-column gap-2">
+                <label>Expiry Date</label>
+                <div class="d-flex gap-3">
+                    <div>
+                        <select id="lstMonth" class="form-control">
+                            <option>Month</option>
+                            <option>01 Jan</option>
+                            <option>02 Feb</option>
+                            <option>03 Mar</option>
+                            <option>04 Apr</option>
+                            <option>05 May</option>
+                            <option>06 Jun</option>
+                            <option>07 Jul</option>
+                            <option>08 Aug</option>
+                            <option>09 Sep</option>
+                            <option>10 Oct</option>
+                            <option>11 Nov</option>
+                            <option>12 Dec</option>
+                        </select>
+                    </div>
+                    <div>                   
+                        <select id="lstYear" class="form-control">
+                            <option>Year</option>
+                            <option>2023</option>
+                            <option>2024</option>
+                            <option>2025</option>
+                            <option>2026</option>
+                            <option>2027</option>
+                            <option>2028</option>
+                            <option>2029</option>
+                            <option>2030</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button id="btnPay" class="btn btn-success">Pay &#40;&#8377;<span id="total"></span>&#41;</button>
+            <span id="error" class="text-center text-danger fs-5 fst-italic"></span>
+        </div>
+
+    </main>
+    <!-- main container end  -->
+
+
+     <!-- footer  -->
+     <footer class="bg-light">
+      <div class="container py-4">
+          <div class="row">
+              <div class="col-md-4">
+                  <h5>About Us</h5>
+                  <p class="text-muted">H-Elite is a luxury hotel chain owned by Name, with the H-Elite Palace in Patna as its flagship property.</p>
+              </div>
+              <div class="col-md-4">
+                  <h5>Quick Links</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="/">Home</a></li>
+                      <li><a href="about.html">About</a></li>
+                      <li><a href="service.html">Services</a></li>
+                      <li><a href="blog.html">Blog</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-4">
+                  <h5>Contact Us</h5>
+                  <ul class="list-unstyled">
+                      <li><i class="fas fa-map-marker-alt"></i> 13<sup>th</sup> Bailey Road, Patna, BR 800014</li>
+                      <li><i class="fas fa-phone"></i> +91 9845623147</li>
+                      <li><i class="fas fa-envelope"></i> info@helite.com</li>
+                  </ul>
+              </div>
+          </div>
+          <hr>
+          <div class="row">
+              <div class="col-md-6">
+                  <p class="text-muted">Copyright © 2023 <a href="#" target="_blank">H-Elite</a>. All rights reserved.</p>
+              </div>
+              <div class="col-md-6 text-md-end">
+                  <ul class="list-inline">
+                      <li class="list-inline-item"><a href="privacy.html">Privacy Policy</a></li>
+                      <li class="list-inline-item"><a href="term.html">Terms of Use</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </footer>
+  <!-- footer end  -->
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+<script src="https://kit.fontawesome.com/2e908ec99e.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
