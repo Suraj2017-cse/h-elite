@@ -1,4 +1,11 @@
 $(document).ready(function () {
+    // Active Nav Link
+    const activePage = window.location.pathname;
+    document.querySelectorAll('nav a').forEach(link => {
+        if(link.href.includes(`${activePage}`)){
+          link.classList.add('text-success');
+        }
+      })
 
     // Define the room types
     const ROOM_TYPES = {
