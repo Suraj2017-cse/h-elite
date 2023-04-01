@@ -155,7 +155,7 @@ $(document).ready(function () {
         // Clear cart and form fields
         cart = {};
         updateCart();
-        // $("#booking-form")[0].reset();
+        $("#booking-form")[0].reset();
     });
 
     // user goto payment page
