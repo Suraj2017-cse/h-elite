@@ -217,25 +217,39 @@ $(document).ready(function () {
         const pattern = /^[6789][0-9]{9}$/;
         const emailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
-
-        if (name === '' && email === '' && phone === '' && msg === '') {
-            $('#status').text("Please enter your details.");
-        } else if (name === '') {
-            $('#status').text("Enter your name");
-        } else if (!emailValid.test(email)) {
-            $('#status').text("Invalid email address");
-        } else if (!pattern.test(phone)) {
-            $('#status').text("Invalid Phone Number.");
-        } else if (msg === '') {
-            $('#status').text("Enter your message");
-        } else {
-            $('#status').text("Thank you for submitting the form.");
-            $('#status').removeClass("text-danger");
-            $('#status').addClass('text-success');
+        if (name === '') {
+            $('#name').addClass('is-invalid');
+            $('#name + .errorMsg').html('Please enter your name.');
+          } else {
+            $('#name').removeClass('is-invalid');
+            $('#name + .errorMsg').html('');
+          }
+          if (!emailValid.test(email)) {
+            $('#email').addClass('is-invalid');
+            $('#email + .errorMsg').html('Please enter valid email.');
+          } else {
+            $('#email').removeClass('is-invalid');
+            $('#email + .errorMsg').html('');
+          }
+          if (!pattern.test(phone)) {
+            $('#number').addClass('is-invalid');
+            $('#number + .errorMsg').html('Please enter valid number number.');
+          } else {
+            $('#number').removeClass('is-invalid');
+            $('#number + .errorMsg').html('');
+          }
+          if (msg === '') {
+            $('#message').addClass('is-invalid');
+            $('#message + .errorMsg').html('Please enter your message.');
+          } else {
+            $('#message').removeClass('is-invalid');
+            $('#message + .errorMsg').html('');
         }
+        if(name !== '' && emailValid.test(email) && pattern.test(phone) && msg !== ''){
+            alert("Successfully Submited")
+         }
 
-        // $('#contactBtn')[0].reset();
-    });
+        });
 
 
     let totalAmt = localStorage.getItem('price');
