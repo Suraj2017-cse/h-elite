@@ -1,11 +1,4 @@
 $(document).ready(function () {
-    // Active Nav Link
-    const activePage = window.location.pathname;
-    document.querySelectorAll('nav a').forEach(link => {
-        if(link.href.includes(`${activePage}`)){
-          link.classList.add('text-success');
-        }
-      })
 
     // Define the room types
     const ROOM_TYPES = {
@@ -92,23 +85,48 @@ $(document).ready(function () {
             "totalPrice": totalPrice,
             "rooms": cart
         }
+        const pattern = /^[6789][0-9]{9}$/;
+        const emailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
-        
-        // User Form Validation  
-        // $('.modal').removeAttr("id"); // remove modal id
-        // $('#modal-button').click(function () {
-            console.log(bookingData.name)
-            if (bookingData.name !== '') {
-                $(".modal").attr('id', 'staticBackdrop'); // Show the modal
-            }
-        // });
-
-        // modal btn close id remove from modal for validation purpose
-        $('.close').click(function () {
-            $('.modal').removeAttr("id");
-        });
-
-
+        //Validate Add to Cart Form
+       
+        if (totalPrice === 0) {
+            $('.errorMsg').html('Please Add your room');
+          } else {
+            $('#name + .errorMsg').html('');
+          }
+        if (name === '') {
+            $('#name').addClass('is-invalid');
+            $('#name + .errorMsg').html('Please enter your name.');
+          } else {
+            $('#name').removeClass('is-invalid');
+            $('#name + .errorMsg').html('');
+          }
+          if (!emailValid.test(email)) {
+            $('#email').addClass('is-invalid');
+            $('#email + .errorMsg').html('Please enter valid email.');
+          } else {
+            $('#email').removeClass('is-invalid');
+            $('#email + .errorMsg').html('');
+          }
+          if (!pattern.test(phone)) {
+            $('#phone').addClass('is-invalid');
+            $('#phone + .errorMsg').html('Please enter valid phone number.');
+          } else {
+            $('#phone').removeClass('is-invalid');
+            $('#phone + .errorMsg').html('');
+          }
+          if (address === '') {
+            $('#address').addClass('is-invalid');
+            $('#address + .errorMsg').html('Please enter your address.');
+          } else {
+            $('#address').removeClass('is-invalid');
+            $('#address + .errorMsg').html('');
+        }
+        if(totalPrice !== 0 && name !== '' && emailValid.test(email) && pattern.test(phone) && address !== ''){
+           $("#staticBackdrop").modal("show");
+        }
+           
 
         // Store the data in the local storage
         localStorage.setItem('name', bookingData.name);
@@ -137,11 +155,11 @@ $(document).ready(function () {
         // Clear cart and form fields
         cart = {};
         updateCart();
-        $("#booking-form")[0].reset();
+        // $("#booking-form")[0].reset();
     });
 
-     // user goto payment page
-     $('#confirmPayment').click(function () {
+    // user goto payment page
+    $('#confirmPayment').click(function () {
         window.location.href = "payment.html";
     });
 
@@ -155,16 +173,16 @@ $(document).ready(function () {
         }
 
         // Payment Detail Validation
-        let cardnumber = document.getElementById("txtCard").value;
-        let cvv = document.getElementById("txtCvv").value;
-        let year = document.getElementById("lstYear").value;
-        let month = document.getElementById("lstMonth").value;
-        if (cardnumber === "" || cvv === "") {
-            document.getElementById('error').innerText = "please enter card no. & cvv";
-        } else if (cardnumber != userDetails.CardNo || cvv != userDetails.CVV) {
-            document.getElementById('error').innerText = "please enter valid card no. & cvv";
+        let cardnumber = $("#txtCard").val();
+        let cvv = $("#txtCvv").val();
+        let year = $("#lstYear").val();
+        let month = $("#lstMonth").val();
+        if (cardnumber != userDetails.CardNo) {
+            $('#error').text("Invalid Card Number");
+        } else if (cvv != userDetails.CVV) {
+            $('#error').text("Invalid Cvv Number");
         } else if (year != userDetails.Year || month != userDetails.Month) {
-            document.getElementById('error').innerText = "please enter valid Expiry Date";
+            $('#error').text("Invalid Expiry Date");
         } else {
             window.location.href = "success.html";
         }
@@ -197,35 +215,44 @@ $(document).ready(function () {
         let phone = $("#number").val();
         let msg = $("#message").val();
         const pattern = /^[6789][0-9]{9}$/;
-        const emailValid =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        const emailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
-        if(pattern.test(phone) && emailValid.test(email) && name !== '' && msg !== ''){
-            alert("Submit SuccesFull");
-        }else{
-           document.getElementsByClassName('error') = "Invalid Details";
+
+        if (name === '' && email === '' && phone === '' && msg === '') {
+            $('#status').text("Please enter your details.");
+        } else if (name === '') {
+            $('#status').text("Enter your name");
+        } else if (!emailValid.test(email)) {
+            $('#status').text("Invalid email address");
+        } else if (!pattern.test(phone)) {
+            $('#status').text("Invalid Phone Number.");
+        } else if (msg === '') {
+            $('#status').text("Enter your message");
+        } else {
+            $('#status').text("Thank you for submitting the form.");
+            $('#status').removeClass("text-danger");
+            $('#status').addClass('text-success');
         }
 
-
-
+        // $('#contactBtn')[0].reset();
     });
 
-    
+
     let totalAmt = localStorage.getItem('price');
     $('#total').text(totalAmt);
-    
+
     // Generate a random number
     let randomNumber = Math.floor(Math.random() * 999999) + 1;
     // Set the random number in the HTML
     $("#randomNumber").text(randomNumber);
 
-        
+
     // Remove the data from the local storage
     localStorage.removeItem('name');
     localStorage.removeItem('email');
     localStorage.removeItem('address')
     localStorage.removeItem('phone');
     localStorage.removeItem('rooms');
-    localStorage.removeItem('price'); 
+    localStorage.removeItem('price');
 
 });
-
